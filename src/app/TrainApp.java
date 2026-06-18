@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 import model.Bogie;
 
 public class TrainApp {
@@ -95,6 +96,17 @@ public class TrainApp {
         
         System.out.println("Bogies sorted by capacity:");
         for (Bogie bogie : bogiesList) {
+            System.out.println(bogie);
+        }
+        
+        System.out.println("\n--- UC8: Filter Bogies Using Streams ---");
+        int threshold = 50;
+        List<Bogie> filteredBogies = bogiesList.stream()
+            .filter(b -> b.getCapacity() > threshold)
+            .collect(Collectors.toList());
+            
+        System.out.println("Bogies with capacity > " + threshold + ":");
+        for (Bogie bogie : filteredBogies) {
             System.out.println(bogie);
         }
     }
