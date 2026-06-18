@@ -9,5 +9,15 @@ public class TrainApp {
         
         List<String> train = new ArrayList<>();
         System.out.println("Initial bogie count: " + train.size());
+        
+        train.add("Sleeper");
+        train.add("AC Chair");
+        train.add("First Class");
+        
+        train.remove("AC Chair");
+        
+        boolean hasSleeper = train.contains("Sleeper");
+        System.out.println("Contains Sleeper: " + hasSleeper);
+        System.out.println("Final consist: " + train);
     }
 }
