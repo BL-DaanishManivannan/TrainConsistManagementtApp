@@ -139,5 +139,10 @@ public class TrainApp {
         System.out.println("Adding Explosive Cargo...");
         realTrain.addBogie(new GoodsBogie("GB-2", "Danger Cargo", "Goods", 50, 50, "Explosive Cargo"));
         trainService.validateConsist(realTrain);
+        
+        System.out.println("\n--- UC12: Reporting ---");
+        // Remove the explosive cargo to make the train safe again before reporting
+        realTrain.getBogies().removeIf(b -> "GB-2".equals(b.getId()));
+        trainService.generateReport(realTrain);
     }
 }
