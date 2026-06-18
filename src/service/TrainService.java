@@ -30,4 +30,31 @@ public class TrainService {
         System.out.println("Validation passed: Consist is safe and valid.");
         return true;
     }
+
+    public void generateReport(Train train) {
+        System.out.println("--- Train Consist Report ---");
+        System.out.println("Total Bogies: " + train.getBogies().size());
+        
+        int passengerCapacity = 0;
+        int cargoCapacity = 0;
+        
+        System.out.println("Formation Sequence:");
+        for (int i = 0; i < train.getBogies().size(); i++) {
+            Bogie bogie = train.getBogies().get(i);
+            System.out.println("  " + (i + 1) + ". " + bogie.getId() + " (" + bogie.getType() + ")");
+            
+            if (bogie instanceof model.PassengerBogie) {
+                passengerCapacity += ((model.PassengerBogie) bogie).getSeatCapacity();
+            } else if (bogie instanceof GoodsBogie) {
+                cargoCapacity += ((GoodsBogie) bogie).getLoadCapacity();
+            }
+        }
+        
+        System.out.println("Passenger Capacity: " + passengerCapacity);
+        System.out.println("Cargo Capacity: " + cargoCapacity);
+        
+        boolean isSafe = validateConsist(train);
+        System.out.println("Safety Status: " + (isSafe ? "SAFE" : "UNSAFE"));
+        System.out.println("----------------------------");
+    }
 }
