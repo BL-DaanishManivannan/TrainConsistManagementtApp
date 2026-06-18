@@ -12,6 +12,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 import model.Bogie;
+import model.GoodsBogie;
+import model.PassengerBogie;
+import model.Train;
 
 public class TrainApp {
     public static void main(String[] args) {
@@ -87,10 +90,10 @@ public class TrainApp {
         
         System.out.println("\n--- UC7: Sort Bogies by Capacity ---");
         List<Bogie> bogiesList = new ArrayList<>();
-        bogiesList.add(new Bogie("Sleeper", 72));
-        bogiesList.add(new Bogie("AC Chair", 56));
-        bogiesList.add(new Bogie("First Class", 24));
-        bogiesList.add(new Bogie("Cargo", 120));
+        bogiesList.add(new PassengerBogie("B-01", "Sleeper", "Passenger", 72, 72));
+        bogiesList.add(new PassengerBogie("B-02", "AC Chair", "Passenger", 56, 56));
+        bogiesList.add(new PassengerBogie("B-03", "First Class", "Passenger", 24, 24));
+        bogiesList.add(new GoodsBogie("B-04", "Cargo", "Goods", 120, 100, "General"));
         
         Collections.sort(bogiesList, (b1, b2) -> Integer.compare(b1.getCapacity(), b2.getCapacity()));
         
@@ -120,5 +123,12 @@ public class TrainApp {
         System.out.println("Average Capacity: " + averageCapacity);
         System.out.println("Maximum Capacity: " + maxCapacity);
         System.out.println("Minimum Capacity: " + minCapacity);
+        
+        System.out.println("\n--- UC10: Full OOP Refactor ---");
+        Train realTrain = new Train();
+        realTrain.addBogie(new PassengerBogie("PB-1", "Sleeper", "Passenger", 72, 72));
+        realTrain.addBogie(new GoodsBogie("GB-1", "Rectangular Cargo", "Goods", 100, 80, "Coal"));
+        System.out.println("Train OOP consist: " + realTrain);
+        System.out.println("Train OOP total capacity: " + realTrain.getTotalCapacity());
     }
 }
