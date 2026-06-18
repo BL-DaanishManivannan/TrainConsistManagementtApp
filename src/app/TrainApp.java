@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Collections;
+import java.util.Comparator;
+import model.Bogie;
 
 public class TrainApp {
     public static void main(String[] args) {
@@ -79,6 +82,20 @@ public class TrainApp {
         System.out.println("Bogie Capacity Mappings:");
         for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+        
+        System.out.println("\n--- UC7: Sort Bogies by Capacity ---");
+        List<Bogie> bogiesList = new ArrayList<>();
+        bogiesList.add(new Bogie("Sleeper", 72));
+        bogiesList.add(new Bogie("AC Chair", 56));
+        bogiesList.add(new Bogie("First Class", 24));
+        bogiesList.add(new Bogie("Cargo", 120));
+        
+        Collections.sort(bogiesList, (b1, b2) -> Integer.compare(b1.getCapacity(), b2.getCapacity()));
+        
+        System.out.println("Bogies sorted by capacity:");
+        for (Bogie bogie : bogiesList) {
+            System.out.println(bogie);
         }
     }
 }
