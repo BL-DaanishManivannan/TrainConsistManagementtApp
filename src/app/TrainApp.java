@@ -1,10 +1,12 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class TrainApp {
@@ -66,5 +68,17 @@ public class TrainApp {
         uniqueOrderedFormation.add("Sleeper"); // Attempt duplicate insertion
         
         System.out.println("Final unique ordered formation: " + uniqueOrderedFormation);
+        
+        System.out.println("\n--- UC6: Bogie Capacity Mapping ---");
+        Map<String, Integer> capacityMap = new HashMap<>();
+        capacityMap.put("Sleeper", 72);
+        capacityMap.put("AC Chair", 56);
+        capacityMap.put("First Class", 24);
+        capacityMap.put("Cargo", 120);
+        
+        System.out.println("Bogie Capacity Mappings:");
+        for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
     }
 }
