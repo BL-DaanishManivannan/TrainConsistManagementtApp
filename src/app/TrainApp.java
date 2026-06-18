@@ -2,6 +2,7 @@ package app;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -52,5 +53,18 @@ public class TrainApp {
         orderedFormation.removeLast();
         
         System.out.println("Final ordered formation: " + orderedFormation);
+        
+        System.out.println("\n--- UC5: Ordered Unique Formation ---");
+        Set<String> uniqueOrderedFormation = new LinkedHashSet<>();
+        uniqueOrderedFormation.add("Engine");
+        uniqueOrderedFormation.add("Sleeper");
+        uniqueOrderedFormation.add("Cargo");
+        uniqueOrderedFormation.add("Guard");
+        
+        System.out.println("Initial unique ordered formation: " + uniqueOrderedFormation);
+        
+        uniqueOrderedFormation.add("Sleeper"); // Attempt duplicate insertion
+        
+        System.out.println("Final unique ordered formation: " + uniqueOrderedFormation);
     }
 }
