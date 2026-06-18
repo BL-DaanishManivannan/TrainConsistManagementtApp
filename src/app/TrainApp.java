@@ -15,6 +15,7 @@ import model.Bogie;
 import model.GoodsBogie;
 import model.PassengerBogie;
 import model.Train;
+import service.TrainService;
 
 public class TrainApp {
     public static void main(String[] args) {
@@ -130,5 +131,13 @@ public class TrainApp {
         realTrain.addBogie(new GoodsBogie("GB-1", "Rectangular Cargo", "Goods", 100, 80, "Coal"));
         System.out.println("Train OOP consist: " + realTrain);
         System.out.println("Train OOP total capacity: " + realTrain.getTotalCapacity());
+        
+        System.out.println("\n--- UC11: Cargo Validation ---");
+        TrainService trainService = new TrainService();
+        trainService.validateConsist(realTrain);
+        
+        System.out.println("Adding Explosive Cargo...");
+        realTrain.addBogie(new GoodsBogie("GB-2", "Danger Cargo", "Goods", 50, 50, "Explosive Cargo"));
+        trainService.validateConsist(realTrain);
     }
 }
