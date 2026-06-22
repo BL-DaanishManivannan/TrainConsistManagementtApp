@@ -109,5 +109,16 @@ public class TrainApp {
         for (Bogie bogie : filteredBogies) {
             System.out.println(bogie);
         }
+        
+        System.out.println("\n--- UC9: Aggregate Capacity Analytics ---");
+        int totalCapacity = bogiesList.stream().mapToInt(Bogie::getCapacity).sum();
+        double averageCapacity = bogiesList.stream().mapToInt(Bogie::getCapacity).average().orElse(0.0);
+        int maxCapacity = bogiesList.stream().mapToInt(Bogie::getCapacity).max().orElse(0);
+        int minCapacity = bogiesList.stream().mapToInt(Bogie::getCapacity).min().orElse(0);
+        
+        System.out.println("Total Capacity: " + totalCapacity);
+        System.out.println("Average Capacity: " + averageCapacity);
+        System.out.println("Maximum Capacity: " + maxCapacity);
+        System.out.println("Minimum Capacity: " + minCapacity);
     }
 }
